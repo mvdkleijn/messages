@@ -8,6 +8,7 @@ The messages plugin allows you to provide an in-cms messaging system.
 
 == NOTES ==
 
+This plugin is currently backend only.
 This plugin will be expanded in the near future with:
 
 * Read vs. Unread messages
@@ -15,6 +16,7 @@ This plugin will be expanded in the near future with:
 * Archived messages
 * Draft messages
 * Multiple recipients
+* Functions to allow easy inclusion in frontend
 
 == LICENSE ==
 

@@ -28,13 +28,12 @@ Plugin::setInfos(array(
             'id' => 'messages',
             'title' => __('Messages'),
             'description' => __('Provides an in-site messaging system.'),
-            'version' => '1.1.0',
-            'type' => 'both',
+            'version' => '0.0.1',
             'license' => 'GPL',
             'author' => 'Martijn van der Kleijn',
             'website' => 'http://www.wolfcms.org/',
             'update_url' => 'http://www.wolfcms.org/plugin-versions.xml',
-            'require_wolf_version' => '0.7.5'
+            'require_wolf_version' => '0.7.0'
         ));
 
 if (Plugin::isEnabled('messages')) {
