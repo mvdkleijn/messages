@@ -1,0 +1,47 @@
+* {
+    margin : 0;
+    padding: 0;
+}
+
+table {
+    width: 95%;
+    margin: 0.5em auto;
+}
+
+.messages {
+    margin-top: 1em;
+    padding: 0.5em 1em 1em 1em;
+    border: 1px solid #888;
+    -moz-box-shadow: 5px 5px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 5px 5px 5px #888;
+}
+
+.avatar {
+    float: left;
+    padding-top: 1.5em;
+}
+
+.messages-message {
+    margin-left: 52px;
+}
+
+.message-body {
+    clear: both;
+}
+
+.message-actions {
+    float: right;
+}
+
+.autocomplete-w1 {
+    ackground:url(img/shadow.png) no-repeat bottom right;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin: 10px 0 0 8px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0;
+}
+.autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
+.autocomplete .selected { background:#F0F0F0; }
+.autocomplete div { padding:2px 5px; white-space:nowrap; overflow:hidden; }
+.autocomplete strong { font-weight:normal; color:#3399FF; }
