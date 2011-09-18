@@ -1,34 +1,30 @@
-<form action="<?php echo BASE_URL.'messages/new';?>" class="new_message" id="new_message" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="0d+qN0nuGsZDApE4HT60k02HTNkOvgdypqbkgyUghtY=" /></div>
-    <div class="messages">
-        <p>
-            <label for="message_recipients">
-                Recipient
-            </label> 
-        <div>
-            <input id="message_recipients" name="message[recipient]" size="30" type="text" />
-        </div>
-        </p>
-
-        <p>
-            <label for="message_subject">Subject</label>
-        <div><input id="message_subject" name="message[subject]" size="30" type="text" /></div>
-        </p>
-
-        <p>
-            <label for="message_body">Message body</label>
-        <div>
-            <textarea class="tall" cols="40" id="message_body" name="message[body]" rows="20"></textarea>
-        </div>
-        </p>
-    </div>
-    <br/>
-    <input id="message_submit" name="commit" type="submit" value="Send message" />
+<h1><?php echo $title; ?></h1>
+<form action="<?php echo BASE_URL.'messages/new'; ?>" class="new_message" id="new_message" method="post">
+    <table>
+        <tr>
+            <th><label for="message_recipients"><?php echo __('Recipient');?></label></th>
+            <td><input id="message_recipients" name="message[recipient]" size="30" type="text" /></td>
+        </tr>
+        <tr>
+            <th><label for="message_subject"><?php echo __('Subject');?></label></th>
+            <td><input id="message_subject" name="message[subject]" size="30" type="text" /></td>
+        </tr>
+        <tr>
+            <th><label for="message_body">Message body</label></th>
+            <td><textarea class="tall" cols="40" id="message_body" name="message[body]" rows="20"></textarea></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input id="message_submit" name="commit" type="submit" value="Send message" /></td>
+        </tr>
+    </table>
 </form>
 
 <script type="text/javascript">
     // <![CDATA[
     $(document).ready(function() {
-        $('#message_recipients').autocomplete({serviceUrl:'/wolfcms/?/acuser?query='});
+        $('#message_recipients').autocomplete({serviceUrl:'<?php if (defined('CMS_BACKEND'))
+    echo '?/admin/'; ?>plugin/messages/acUser?query='});
     });
     //]]>
 </script>

@@ -25,13 +25,8 @@ if (!defined('IN_CMS')) {
  */
 ?>
 
-<h1>Inbox</h1>
+<h1><?php echo $title; ?></h1>
 
-<?php /*
-<form action="/messages/bulk_update" method="post">
-    <div style="margin:0;padding:0;display:inline">
-        <input name="authenticity_token" type="hidden" value="Z2kG/G2emcPW4FdyzD2d/+Qxlp6de8P2yUNKpC7kO/A=" />
-    </div> */ ?>
     <table class="index" cellpadding="0" cellspacing="0" border="0">
         <thead>
             <tr>
@@ -42,6 +37,11 @@ if (!defined('IN_CMS')) {
             </tr>
         </thead>
         <tbody>
+            <?php if (!count($messages) > 0) { ?>
+            <tr>
+                <td colspan="4"><?php echo __('No messages were found.');?></td>
+            </tr>
+            <?php } ?>
             <?php foreach ($messages as $message) { ?>
             <tr>
                 <td>

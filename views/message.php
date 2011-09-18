@@ -1,7 +1,7 @@
 <h1><?php echo $message->subject(); ?></h1>
 <div class="messages">
     <div class="avatar">
-        <img alt="avatar" height="32" src="https://secure.gravatar.com/avatar.php?gravatar_id=<?php echo md5($author->email);?>&amp;default=http://localhost/wolfcms/wolf/admin/images/user.png&amp;size=32" width="32" />
+        <img alt="avatar" height="32" src="https://secure.gravatar.com/avatar.php?gravatar_id=<?php echo md5($author->email);?>&amp;default=<?php echo URL_PUBLIC; ?>wolf/admin/images/user.png&amp;size=32" width="32" />
     </div>
     <div class="messages-message">
         <ul class="message-actions">

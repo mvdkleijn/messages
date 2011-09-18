@@ -28,17 +28,17 @@ Plugin::setInfos(array(
             'id' => 'messages',
             'title' => __('Messages'),
             'description' => __('Provides an in-site messaging system.'),
-            'version' => '0.0.1',
-            'license' => 'GPL',
+            'version' => '0.0.2',
+            'license' => 'GPLv3',
             'author' => 'Martijn van der Kleijn',
             'website' => 'http://www.wolfcms.org/',
             'update_url' => 'http://www.wolfcms.org/plugin-versions.xml',
-            'require_wolf_version' => '0.7.0'
+            'require_wolf_version' => '0.7.5'
         ));
 
 if (Plugin::isEnabled('messages')) {
 
-    Plugin::addController('messages', __('Messages'), false, true);
+    Plugin::addController('messages', __('Messages'), 'admin_view', true);
 
     // Load models.
     AutoLoader::addFolder(PLUGINS_ROOT . '/messages/models');
@@ -55,7 +55,7 @@ if (Plugin::isEnabled('messages')) {
 
     // Setup admin routes to the message plugin. TEMP?
     Dispatcher::addRoute(array(
-                '/ac_user/:any' => '/plugin/messages/ac_user/$1',
+                '/admin/messages/acuser/:any' => '/plugin/messages/ac_user/$1',
                 '/admin/messages' => '/plugin/messages/inbox',
                 '/admin/messages/sent' => '/plugin/messages/sent',
                 '/admin/messages/new' => '/plugin/messages/compose',

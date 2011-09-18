@@ -67,52 +67,61 @@ class Message extends Record {
         $reldays = ($time - $today) / 86400;
         $relmonths = ($time - $today) / (86400 * 30);
         
-        if ($relminutes < 0 && $relminutes > -10) {
+        if ($relminutes < 0 && $relminutes > -30) {
             if ($relminutes > -2) {
-                return __('A moment ago');
-            } else if ($relminutes <= 2) {
-                return __('Several minutes ago');
+                return __('a moment ago');
+            } else if ($relminutes >= 2) {
+                return __('several minutes ago');
+            }
+            else if ($relminutes <= 30) {
+                return __('about half an hour ago');
             }
         }
         
         if ($relhours < 0 && $relhours > -1) {
-            return __('About an hour ago.');
+            return __('about an hour ago');
         }
         
         if ($relhours < 0 && $relhours > -5) {
-            return __('A few hours ago.');
+            return __('a few hours ago');
         }
 
         if ($reldays >= 0 && $reldays < 1) {
-            return __('Today');
+            return __('today');
         } else if ($reldays >= 1 && $reldays < 2) {
-            return __('Tomorrow');
+            return __('tomorrow');
         } else if ($reldays >= -1 && $reldays < 0) {
-            return __('Yesterday');
+            return __('yesterday');
         }
 
         if (abs($reldays) < 7) {
             if ($reldays > 0) {
                 $reldays = floor($reldays);
-                return 'In ' . $reldays . ' day' . ($reldays != 1 ? 's' : '');
+                return __('in :num :dayordays', array(':num' => $reldays, ':dayordays' => ($reldays != 1 ? 'days' : 'day')));
             } else {
                 $reldays = floor(abs($reldays));
-                return $reldays . ' day' . ($reldays != 1 ? 's' : '') . ' ago';
+                return __(':num :dayordays ago', array(':num' => $reldays, ':dayordays' => ($reldays != 1 ? 'days' : 'day')));
             }
         }
         
         if (abs($reldays) > 30 && abs($relmonths) < 7) {
             if ($relmonths > 0) {
                 $relmonths = floor($relmonths);
-                return 'In ' . $relmonths . ' month' . ($relmonths != 1 ? 's' : '');
+                return __('in :num :monthormonths', array(':num' => $relmonths, ':monthormonths' => ($relmonths != 1 ? 'months' : 'month')));
             } else {
                 $relmonths = floor(abs($relmonths));
-                $rel = $relmonths . ' month' . ($relmonths != 1 ? 's' : '') . ' ago';
                 if ($reldays < -30) {
                     $reldays = floor(abs($reldays+($relmonths * 30)));
-                    $rel .= ', ' . $reldays . ' day' . ($reldays != 1 ? 's' : '') . ' ago';
+                    return __(':nummonths :monthormonths, :numdays :dayordays ago', array(
+                        ':nummonths' => $relmonths,
+                        ':numdays'  => $reldays,
+                        ':monthormonths' => ($relmonths != 1 ? 'months' : 'month'),
+                        ':dayordays' => ($reldays != 1 ? 'days' : 'day')
+                        ));                    
                 }
-                return $rel;
+                else {
+                    return __(':num :monthormonths ago', array(':num' => $relmonths, ':monthormonths' => ($relmonths != 1 ? 'months' : 'month')));                    
+                }
             }
         }
 

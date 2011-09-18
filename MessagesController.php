@@ -45,7 +45,10 @@ class MessagesController extends PluginController {
         $where = 'to_id=? ORDER BY sent_on DESC';
         $messages = Message::findAllFrom('Message', $where, array(AuthUser::getId()));
         
-        $this->display('messages/views/inbox', array('messages' => $messages));
+        $this->display('messages/views/inbox', array(
+            'title' => __('Inbox'),
+            'messages' => $messages
+            ));
     }
     
     public function sent() {
@@ -54,7 +57,10 @@ class MessagesController extends PluginController {
         $where = 'from_id=? ORDER BY sent_on DESC';
         $messages = Message::findAllFrom('Message', $where, array(AuthUser::getId()));
         
-        $this->display('messages/views/inbox', array('messages' => $messages));
+        $this->display('messages/views/inbox', array(
+            'title' => __('Sent messages'),
+            'messages' => $messages
+            ));
     }
 
     public function message($id) {
@@ -64,7 +70,10 @@ class MessagesController extends PluginController {
             if ($message->toId() != AuthUser::getId() && $message->fromId() != AuthUser::getId()) {
                 $message = __('That is not your message to view.');
             
-                $this->display('messages/views/error', array('message' => $message));                
+                $this->display('messages/views/error', array(
+                    'title' => __('Forbidden'),
+                    'message' => $message
+                    ));
             }
             else {
                 $author = User::findById($message->fromId());
@@ -75,9 +84,12 @@ class MessagesController extends PluginController {
             }
         }
         else {
-            $message = __('We are unable to find that message.');
+            $message = __('The system was unable to find that message.');
             
-            $this->display('messages/views/error', array('message' => $message));
+            $this->display('messages/views/error', array(
+                'title' => __('A problem was detected'),
+                'message' => $message
+                ));
         }
     }
     
@@ -88,7 +100,10 @@ class MessagesController extends PluginController {
 
             $to = User::findBy('username', html_encode($data['recipient']));
             if ($to === false) {
-                $this->display('messages/views/error', array('message' => 'Unable to find the user you requested.'));
+                $this->display('messages/views/error', array(
+                    'title' => __('A problem was detected'),
+                    'message' => __('The system was unable to find the user you were requesting.')
+                    ));
             }
             
             $msg->to_id = $to->id;
@@ -104,10 +119,15 @@ class MessagesController extends PluginController {
             
             $msg->save();
             
-            $this->display('messages/views/error', array('message' => 'The message was delivered.'));
+            $this->display('messages/views/error', array(
+                'title' => __('Message delivered'),
+                'message' => __('The message was delivered.')
+                ));
         }
         else {
-            $this->display('messages/views/compose');
+            $this->display('messages/views/compose', array(
+                'title' => __('Compose a new message')
+            ));
         }
     }
     
@@ -115,7 +135,10 @@ class MessagesController extends PluginController {
         $msg = Message::findByIdFrom('Message', $id);
         
         if ($id === false) {
-            $this->display('messages/views/error', array('message' => 'The message could not be found.'));
+            $this->display('messages/views/error', array(
+                'title'   => __('A problem was detected'),
+                'message' => __('The system was unable to find the message you were attempting to delete.')
+                        ));
         }
         
         if ($msg->fromId() == AuthUser::getId() || $msg->toId() == AuthUser::getId()) {
