@@ -23,8 +23,7 @@
 <script type="text/javascript">
     // <![CDATA[
     $(document).ready(function() {
-        $('#message_recipients').autocomplete({serviceUrl:'<?php if (defined('CMS_BACKEND'))
-    echo '?/admin/'; ?>plugin/messages/acUser?query='});
+        $('#message_recipients').autocomplete({serviceUrl:'<?php echo $serviceurl; ?>'});
     });
     //]]>
 </script>

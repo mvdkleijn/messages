@@ -125,7 +125,26 @@ class MessagesController extends PluginController {
                 ));
         }
         else {
+            if (USE_MOD_REWRITE !== true) {
+                if (defined('CMS_BACKEND')) {
+                    $su = '?/admin/plugin/messages/acUser?query=';
+                }
+                else {
+                    $su = '?/plugin/messages/acUser?query=';
+                }
+            }
+            else {
+                if (defined('CMS_BACKEND')) {
+                    $su = 'admin/plugin/messages/acUser?query=';
+                }
+                else {
+                    $su = 'plugin/messages/acUser?query=';
+                }                
+            }
+            
+            
             $this->display('messages/views/compose', array(
+                'serviceurl' => $su,
                 'title' => __('Compose a new message')
             ));
         }
