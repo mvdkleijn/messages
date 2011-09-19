@@ -28,7 +28,7 @@ Plugin::setInfos(array(
             'id' => 'messages',
             'title' => __('Messages'),
             'description' => __('Provides an in-site messaging system.'),
-            'version' => '0.0.2',
+            'version' => '0.0.3',
             'license' => 'GPLv3',
             'author' => 'Martijn van der Kleijn',
             'website' => 'http://www.wolfcms.org/',
