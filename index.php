@@ -44,6 +44,7 @@ if (Plugin::isEnabled('messages')) {
     AutoLoader::addFolder(PLUGINS_ROOT . '/messages/models');
 
     // Setup nice routes to the message plugin.
+    /*
     Dispatcher::addRoute(array(
                 '/acuser' => '/plugin/messages/acUser',
                 '/messages' => '/plugin/messages/inbox',
@@ -52,14 +53,14 @@ if (Plugin::isEnabled('messages')) {
                 '/delete/message/:num' => '/plugin/messages/delete/$1',
                 '/message/:num' => '/plugin/messages/message/$1'
             ));
-
+*/
     // Setup admin routes to the message plugin. TEMP?
     Dispatcher::addRoute(array(
-                '/admin/messages/acuser/:any' => '/plugin/messages/ac_user/$1',
-                '/admin/messages' => '/plugin/messages/inbox',
-                '/admin/messages/sent' => '/plugin/messages/sent',
-                '/admin/messages/new' => '/plugin/messages/compose',
-                '/admin/delete/message/:num' => '/plugin/messages/delete/$1',
-                '/admin/message/:num' => '/plugin/messages/message/$1'
+                '/'.ADMIN_DIR.'/messages/acuser/:any' => '/plugin/messages/ac_user/$1',
+                '/'.ADMIN_DIR.'/messages' => '/plugin/messages/inbox',
+                '/'.ADMIN_DIR.'/messages/sent' => '/plugin/messages/sent',
+                '/'.ADMIN_DIR.'/messages/new' => '/plugin/messages/compose',
+                '/'.ADMIN_DIR.'/delete/message/:num' => '/plugin/messages/delete/$1',
+                '/'.ADMIN_DIR.'/message/:num' => '/plugin/messages/message/$1'
             ));
 }

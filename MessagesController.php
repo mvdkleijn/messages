@@ -127,7 +127,7 @@ class MessagesController extends PluginController {
         else {
             if (USE_MOD_REWRITE !== true) {
                 if (defined('CMS_BACKEND')) {
-                    $su = '?/admin/plugin/messages/acUser?query=';
+                    $su = '?/'.ADMIN_DIR.'/plugin/messages/acUser?query=';
                 }
                 else {
                     $su = '?/plugin/messages/acUser?query=';
@@ -135,7 +135,7 @@ class MessagesController extends PluginController {
             }
             else {
                 if (defined('CMS_BACKEND')) {
-                    $su = 'admin/plugin/messages/acUser?query=';
+                    $su = ADMIN_DIR.'/plugin/messages/acUser?query=';
                 }
                 else {
                     $su = 'plugin/messages/acUser?query=';
