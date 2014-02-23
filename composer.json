@@ -1,0 +1,19 @@
+{
+  "name": "mvdkleijn/messages",
+  "description": "Provides an in-site messaging system.",
+  "keywords": ["plugin", "messages", "messaging"],
+  "homepage": "http://vanderkleijn.net",
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "Martijn van der Kleijn",
+      "email": "martijn.niji@gmail.com",
+      "homepage": "http://vanderkleijn.net"
+    }
+  ],
+  "type": "wolfcms-plugin",
+  "require": {
+    "php": ">=5.3.0",
+    "composer/installers": "v1.0.12"
+  }
+}
