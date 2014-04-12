@@ -11,9 +11,5 @@
       "homepage": "http://vanderkleijn.net"
     }
   ],
-  "type": "wolfcms-plugin",
-  "require": {
-    "php": ">=5.3.0",
-    "composer/installers": "v1.0.12"
-  }
+  "type": "wolfcms-plugin"
 }
