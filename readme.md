@@ -4,7 +4,7 @@ The messages plugin allows you to provide an in-cms messaging system.
 
 == HOW TO USE IT ==
 
-* Install it.
+* Install it using composer or manually.
 
 == NOTES ==
 
