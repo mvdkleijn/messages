@@ -1,3 +1,5 @@
+**Status:** No longer active / archived
+
 == WHAT IT IS ==
 
 The messages plugin allows you to provide an in-cms messaging system.
